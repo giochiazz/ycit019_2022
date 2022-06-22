@@ -77,27 +77,13 @@ bool ExtractJsonBool(const Json& json, absl::string_view field_name,
 bool ExtractJsonArray(const Json& json, absl::string_view field_name,
                       const Json::Array** output,
                       std::vector<grpc_error_handle>* error_list) {
-  if (json.type() != Json::Type::ARRAY) {
-    *output = nullptr;
-    error_list->push_back(GRPC_ERROR_CREATE_FROM_CPP_STRING(
-        absl::StrCat("field:", field_name, " error:type should be ARRAY")));
-    return false;
-  }
-  *output = &json.array_value();
-  return true;
+  return json.type() == Json::Type::ARRAY;
 }
 
 bool ExtractJsonObject(const Json& json, absl::string_view field_name,
                        const Json::Object** output,
                        std::vector<grpc_error_handle>* error_list) {
-  if (json.type() != Json::Type::OBJECT) {
-    *output = nullptr;
-    error_list->push_back(GRPC_ERROR_CREATE_FROM_CPP_STRING(
-        absl::StrCat("field:", field_name, " error:type should be OBJECT")));
-    return false;
-  }
-  *output = &json.object_value();
-  return true;
+  return json.type() == Json::Type::OBJECT;
 }
 
 bool ParseJsonObjectFieldAsDuration(const Json::Object& object,
