@@ -61,7 +61,7 @@ class CompressionAlgorithmSet {
   CompressionAlgorithmSet();
   // Construct from a std::initializer_list of grpc_compression_algorithm
   // values.
-  CompressionAlgorithmSet(
+  explicit CompressionAlgorithmSet(
       std::initializer_list<grpc_compression_algorithm> algorithms);
 
   // Given a compression level, choose an appropriate algorithm from this set.

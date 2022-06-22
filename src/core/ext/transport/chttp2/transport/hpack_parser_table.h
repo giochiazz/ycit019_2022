@@ -36,7 +36,7 @@ namespace grpc_core {
 class HPackTable {
  public:
   HPackTable();
-  ~HPackTable();
+  ~HPackTable() = default;
 
   HPackTable(const HPackTable&) = delete;
   HPackTable& operator=(const HPackTable&) = delete;

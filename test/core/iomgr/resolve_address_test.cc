@@ -216,13 +216,7 @@ bool IPv6DisabledGetSourceAddr(address_sorting_source_addr_factory* /*factory*/,
                                address_sorting_address* source_addr) {
   // Mock lack of IPv6. For IPv4, set the source addr to be the same
   // as the destination; tests won't actually connect on the result anyways.
-  if (address_sorting_abstract_get_family(dest_addr) ==
-      ADDRESS_SORTING_AF_INET6) {
-    return false;
-  }
-  memcpy(source_addr->addr, &dest_addr->addr, dest_addr->len);
-  source_addr->len = dest_addr->len;
-  return true;
+  return !;
 }
 
 void DeleteSourceAddrFactory(address_sorting_source_addr_factory* factory) {

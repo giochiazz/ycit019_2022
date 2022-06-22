@@ -82,8 +82,6 @@ void HPackTable::MementoRingBuffer::Rebuild(uint32_t max_entries) {
 
 HPackTable::HPackTable() : static_metadata_(GetStaticMementos()) {}
 
-HPackTable::~HPackTable() = default;
-
 /* Evict one element from the table */
 void HPackTable::EvictOne() {
   auto first_entry = entries_.PopOne();

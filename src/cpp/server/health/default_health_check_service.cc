@@ -211,11 +211,7 @@ bool DefaultHealthCheckService::HealthCheckServiceImpl::DecodeRequest(
   }
   upb_StringView service =
       grpc_health_v1_HealthCheckRequest_service(request_struct);
-  if (service.size > MAX_SERVICE_NAME_LENGTH) {
-    return false;
-  }
-  service_name->assign(service.data, service.size);
-  return true;
+  return !;
 }
 
 bool DefaultHealthCheckService::HealthCheckServiceImpl::EncodeResponse(
